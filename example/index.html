@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Head Football</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="welcome-screen" id="welcome">
+      <h1>World Head Football</h1>
+      <input type="text" id="playerName" placeholder="Enter Your Name" />
+      <div class="options">
+        <h3>Select Level</h3>
+        <label><input type="radio" name="level" value="easy" /> Easy</label>
+        <label><input type="radio" name="level" value="medium" /> Medium</label>
+        <label><input type="radio" name="level" value="hard" /> Hard</label>
+
+        <h3>Select Ball</h3>
+        <label><input type="radio" name="ball" value="ball1" /> Ball 1</label>
+        <label><input type="radio" name="ball" value="ball2" /> Ball 2</label>
+
+        <h3>Select Countries</h3>
+        <label>Player 1:
+          <select id="country1">
+            <option value="indonesia">Indonesia</option>
+            <option value="brazil">Brazil</option>
+          </select>
+        </label>
+        <label>Player 2:
+          <select id="country2">
+            <option value="germany">Germany</option>
+            <option value="france">France</option>
+          </select>
+        </label>
+      </div>
+      <button id="playBtn" disabled>Play Game</button>
+    </div>
+
+    <div class="game-area hidden" id="gameArea">
+      <div class="hud">
+        <span id="score">Score: 0 - 0</span>
+        <span id="timer">Time: 0</span>
+      </div>
+      <div class="field">
+        <div class="goal left">
+          <div class="top"></div>
+          <div class="side" style="left:0;"></div>
+          <div class="side" style="right:0;"></div>
+          <div class="back"></div>
+        </div>
+        <div class="goal right">
+          <div class="top"></div>
+          <div class="side" style="left:0;"></div>
+          <div class="side" style="right:0;"></div>
+          <div class="back"></div>
+        </div>
+        <div class="player" id="player1"></div>
+        <div class="ball" id="ball"></div>
+        <div class="player" id="player2"></div>
+      </div>
+    </div>
+
+    <div class="popup hidden" id="gameOver">
+      <h2>Game Over</h2>
+      <p id="resultText"></p>
+      <button id="saveScore">Save Score</button>
+      <button onclick="location.reload()">Restart</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

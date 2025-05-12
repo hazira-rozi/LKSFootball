@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  background-color: #121212;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  width: 1000px;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+}
+.hidden {
+  display: none !important;
+}
+.welcome-screen {
+  background: url('assets/img/outdoor.jpg') no-repeat center/cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.welcome-screen .options,
+.welcome-screen h1,
+.welcome-screen input,
+.welcome-screen button {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+}
+.welcome-screen input,
+.welcome-screen select {
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+}
+.game-area {
+  width: 100%;
+  height: 100%;
+  background: url('assets/img/background.jpg') no-repeat center/cover;
+  position: relative;
+}
+.hud {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #222;
+}
+.field {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 50px);
+  overflow: hidden;
+}
+.player {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.ball {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 100px;
+  left: 480px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.item {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.goal {
+  position: absolute;
+  width: 50px;
+  height: 250px;
+  margin-top: 425px;
+
+  /* z-index: 1; */
+}
+.goal .post {
+  width: 75px;
+  height: 250px;
+  background-image: url('assets/img/goal.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.goal.left { left: 0; }
+.goal.right { right: 0; transform: scaleX(-1);}
+.popup {
+  background: rgba(30, 30, 30, 0.95);
+  padding: 20px;
+  border: 2px solid #444;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}

@@ -13,7 +13,7 @@ let welcomeStarted = false;
 let score1 = 0, score2 = 0, timer = 30, freeze = false;
 let gameInterval, timerInterval, itemInterval;
 let ballX = 480, ballY = 100, ballVX = 3, ballVY = 2;
-let p1X = 100, p1Y = 0, p2X = 800, p2Y = 0;
+let p1X = 100, p1Y = 500, p2X = 800, p2Y = 500;
 let p1VY = 0, p2VY = 0;
 const gravity = 0.5;
 const floorY = 500;
@@ -136,7 +136,7 @@ function gameLoop() {
   }
 
   // Check goal (from front only)
-  if (ballY >= 440 && ballY <= 540) {
+  if (ballY >= 350 && ballY <= 650) {
     if (ballX <= 10 && ballVX < 0) {
       score2++;
       goalSFX.play();

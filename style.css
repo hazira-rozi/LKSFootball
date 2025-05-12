@@ -89,14 +89,14 @@ body {
 }
 .goal {
   position: absolute;
-  width: 50px;
+  width: 100px;
   height: 250px;
   margin-top: 425px;
 
   /* z-index: 1; */
 }
 .goal .post {
-  width: 75px;
+  width: 105px;
   height: 250px;
   background-image: url('assets/img/goal.png');
   background-size: contain;

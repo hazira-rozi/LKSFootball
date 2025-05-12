@@ -103,8 +103,8 @@ body {
   background-repeat: no-repeat;
 }
 
-.goal.left { left: 0; }
-.goal.right { right: 0; transform: scaleX(-1);}
+.goal.left goal.left-game { left: 0; }
+.goal.right goal.left-game { right: 0; transform: scaleX(-1);}
 .popup {
   background: rgba(30, 30, 30, 0.95);
   padding: 20px;

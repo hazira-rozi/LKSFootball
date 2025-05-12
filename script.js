@@ -66,8 +66,8 @@ function startGame() {
 }
 
 function resetPositions() {
-  p1X = 100; p1Y = 0;
-  p2X = 800; p2Y = 0;
+  p1X = 100; p1Y = 500;
+  p2X = 800; p2Y = 500;
   ballX = 480; ballY = 100;
   ballVX = 3 * (Math.random() > 0.5 ? 1 : -1);
   ballVY = 2;

@@ -9,14 +9,15 @@ const resultText = document.getElementById('resultText');
 const playBtn = document.getElementById('playBtn');
 const playerName = document.getElementById('playerName');
 const gameOverPopup = document.getElementById('gameOver');
-let welcomeStarted = false;
+let welcomeStarted = true;
 let score1 = 0, score2 = 0, timer = 30, freeze = false;
 let gameInterval, timerInterval, itemInterval;
 let ballX = 480, ballY = 100, ballVX = 3, ballVY = 2;
-let p1X = 100, p1Y = 500, p2X = 800, p2Y = 500;
+let p1X = 100, p1Y = 0, p2X = 800, p2Y = 0;
 let p1VY = 0, p2VY = 0;
 const gravity = 0.5;
 const floorY = 500;
+let goalScored = false;
 
 // Audio
 const bgm = new Audio('assets/audio/bgm.mp3');
@@ -25,12 +26,12 @@ const goalSFX = new Audio('assets/audio/goal.wav');
 const itemSFX = new Audio('assets/audio/item.wav');
 const freezeSFX = new Audio('assets/audio/freeze.wav');
 
-document.addEventListener('click', () => {
-  if (!welcomeStarted) {
-    bg_welcome.play().catch(() => {});
-    welcomeStarted = true;
-  }
-});
+// document.addEventListener('click', () => {
+//   if (!welcomeStarted) {
+//     bg_welcome.play().catch(() => {});
+//     welcomeStarted = true;
+//   }
+// });
 playerName.addEventListener('input', () => {
   playBtn.disabled = playerName.value.trim() === '';
 });
@@ -66,8 +67,8 @@ function startGame() {
 }
 
 function resetPositions() {
-  p1X = 100; p1Y = 500;
-  p2X = 800; p2Y = 500;
+  p1X = 100; p1Y = 0;
+  p2X = 800; p2Y = 0;
   ballX = 480; ballY = 100;
   ballVX = 3 * (Math.random() > 0.5 ? 1 : -1);
   ballVY = 2;
@@ -136,19 +137,28 @@ function gameLoop() {
   }
 
   // Check goal (from front only)
-  if (ballY >= 350 && ballY <= 650) {
-    if (ballX <= 10 && ballVX < 0) {
-      score2++;
-      goalSFX.play();
-      scoreEl.textContent = `Score: ${score1} - ${score2}`;
-      setTimeout(resetPositions, 1500);
-    } else if (ballX >= 950 && ballVX > 0) {
-      score1++;
-      goalSFX.play();
-      scoreEl.textContent = `Score: ${score1} - ${score2}`;
-      setTimeout(resetPositions, 1500);
-    }
+  if (!goalScored && ballY >= 350 && ballY <= 650) {
+  if (ballX <= 10 && ballVX < 0) {
+    goalScored = true;
+    score2++;
+    goalSFX.play();
+    scoreEl.textContent = `Score: ${score1} - ${score2}`;
+    setTimeout(() => {
+      resetPositions();
+      goalScored = false;
+    }, 1500);
+  } else if (ballX >= 950 && ballVX > 0) {
+    goalScored = true;
+    score1++;
+    goalSFX.play();
+    scoreEl.textContent = `Score: ${score1} - ${score2}`;
+    setTimeout(() => {
+      resetPositions();
+      goalScored = false;
+    }, 1500);
   }
+}
+
 
   // Item collision
   const item = document.querySelector('.item');
